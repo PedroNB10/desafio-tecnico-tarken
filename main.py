@@ -63,35 +63,3 @@ print(f'Number of Meteors: {number_of_meteors}')
 print(f'Number of Meteors on the Water: {meteors_on_lake}')
 
 print(f'Number of blue pixels: {number_of_blue_pixels}')
-
-
-def print_sky_dots(image, sky_dot_color):
-    sky_dot_positions = []
-    for y in range(image.height):
-        for x in range(image.width):
-            pixel_color = image.getpixel((x, y))
-            if pixel_color == sky_dot_color:
-                sky_dot_positions.append((x, y))
-
-    if not sky_dot_positions:
-        print("No sky dots found in the image.")
-        return
-
-    # Find the bounding box of the sky dots
-    min_x = min(sky_dot_positions, key=lambda pos: pos[0])[0]
-    max_x = max(sky_dot_positions, key=lambda pos: pos[0])[0]
-    min_y = min(sky_dot_positions, key=lambda pos: pos[1])[1]
-    max_y = max(sky_dot_positions, key=lambda pos: pos[1])[1]
-
-    # Iterate through each position in the bounding box
-    for y in range(min_y, max_y + 1):
-        for x in range(min_x, max_x + 1):
-            if (x, y) in sky_dot_positions:
-                print("*", end="")
-            else:
-                print(" ", end="")
-        print()  # Move to the next line after each row
-
-
-# Example usage:
-print_sky_dots(img, (255, 255, 255))
