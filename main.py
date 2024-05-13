@@ -21,7 +21,7 @@ black_color = (0, 0, 0)
 white_pixels_positions = set()
 black_pixels_positions = set()
 red_pixels_positions = set()
-blue_y_positions = set()
+blue_x_positions = set()
 
 # Contadores
 number_of_stars = 0
@@ -46,7 +46,7 @@ for i, color in enumerate(pixels_data):
 
     elif color == blue_color:
         number_of_blue_pixels += 1
-        blue_y_positions.add(y)
+        blue_x_positions.add(x)
 
     elif color == black_color:
         number_of_black_pixels += 1
@@ -55,7 +55,8 @@ for i, color in enumerate(pixels_data):
 meteors_on_lake = 0
 
 for x, y in red_pixels_positions:
-    if y in blue_y_positions:
+
+    if x in blue_x_positions:
         meteors_on_lake += 1
 
 print(f'Number of Stars: {number_of_stars}')
